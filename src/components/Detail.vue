@@ -1,4 +1,3 @@
-import { mapAction, mapState } from 'vuex';
 <template>
     <div>
         <nav aria-label="breadcrumb">

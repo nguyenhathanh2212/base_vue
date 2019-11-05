@@ -1,13 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueRouter from 'vue-router';
 import store from './store';
-
-//component
-import Home from './components/Home.vue';
-import HelloWorld from './components/HelloWorld.vue';
-import Detail from './components/Detail.vue';
-import ListTodo from './components/ListToDo.vue';
+import router from './router';
+import Vuelidate from 'vuelidate'
+import firebase from 'firebase';
 
 // library
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -17,25 +13,25 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 
 Vue.config.productionTip = false
 
-// route
-Vue.use(VueRouter);
+Vue.use(Vuelidate)
 
-const routes = [
-  { path: '/', component: HelloWorld, name: 'helloworld' },
-  { path: '/home', component: Home, 
-    children: [
-      { path: '/', component: ListTodo, name: 'list-todo' },
-      { path: '/:id', component: Detail, name: 'detail-todo' },
-    ]
-  },
-];
+const firebaseConfig = {
+    apiKey: "AIzaSyCl9JlSySzQN8M8RlUfgMR_LoKxuYst_tk",
+    authDomain: "aerobic-gift-223013.firebaseapp.com",
+    databaseURL: "https://aerobic-gift-223013.firebaseio.com",
+    projectId: "aerobic-gift-223013",
+    storageBucket: "aerobic-gift-223013.appspot.com",
+    messagingSenderId: "595431675745",
+    appId: "1:595431675745:web:e7a381ee4e53a7f0d2d720",
+    measurementId: "G-G93JDSB7R3"
+};
 
-const router = new VueRouter({
-  routes
-});
+firebase.initializeApp(firebaseConfig);
+// firebase.analytics();
+export const db = firebase.firestore()
 
 new Vue({
   render: h => h(App),
   router,
   store
-}).$mount('#app')
+}).$mount('#app');
