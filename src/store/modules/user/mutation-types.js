@@ -1,0 +1,3 @@
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const SET_USER_PROFILE = 'SET_USER_PROFILE';
+export const CLEAR_DATA = 'CLEAR_DATA';
